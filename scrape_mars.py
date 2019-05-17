@@ -76,7 +76,8 @@ def scrape_info():
 
 	html = browser.html
 	mars_facts = pd.read_html(html)
-	mars_facts = mars_facts[0].to_string()
+	mars_facts = mars_facts[0]
+	mars_facts = mars_facts.to_html(columns=None, col_space=None, header=False, index=False)
 
 	# Mars Hemispheres
 	hem_url = 'https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars'

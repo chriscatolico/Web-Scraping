@@ -1,7 +1,6 @@
 from flask import Flask, render_template, redirect
 from flask_pymongo import PyMongo
 import scrape_mars
-from flask import jsonify
 import sys
 
 # Create an instance of Flask
@@ -31,8 +30,6 @@ def scrape():
 
     # Update the Mongo database using update and upsert=True
     mongo.db.collection.update({}, mars_information, upsert=True)
-
-    mars_information = jsonify(mars_information)
 
     # Redirect back to home page
     return redirect("/")
