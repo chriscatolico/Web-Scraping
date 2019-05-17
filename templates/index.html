@@ -12,17 +12,37 @@
 <body>
   <div class="container-fluid">
     <div class="jumbotron text-center">
-      <h1>Mars</h1>
-      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Get Data!</a></p>
+      <h1>Mission to Mars</h1>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape Mars Data</a></p>
     </div>
-    <h2>Mars Scraped Data</h2>
-    <h3>NASA Mars News Titles: {{ mars.NASA_Mars_News_Title.find }}</h3>
-    <h3>NASA Mars News Ledes: {{ mars.NASA_Mars_News_Lede }}</h3>
-	<h3>JPL Featured Image URL: {{ mars.JPL_Featured_Image_URL }}</h3>
-    <img src="{{ mars.JPL_Featured_Image_URL }}" alt="JPL_Featured_Image">
-	<h3>Mars Daily Weather: {{ mars.Mars_Weather_Tweet }}</h3>
-	<h3>Mars Space Facts: {{ mars.Mars_Space_Facts }}</h3>
-	<h3>Mars Hemispheres: {{ mars.Mars_Hemispheres }}</h3>
+    <div class="container">
+        <div class="row">
+            <h2>Latest Mars News</h2>
+            <h3>{{ mars.NASA_Mars_News_Titles[1] }}</h3>
+            <h4>{{ mars.NASA_Mars_News_Ledes[1] }}</h4>
+        </div>
+        <div class="row">
+            <div class="col-md-6">    
+                <h2>Mars Space Facts</h2>
+                {{ mars.Mars_Space_Facts |safe}}
+            </div>
+            <div class="col-md-6">
+                <h2>Current Weather Tweet</h2>
+                <h3>{{ mars.Mars_Weather_Tweet }}</h3>
+            </div>
+        </div>
+        <h2>Featured Mars Image</h2>
+        <img src="{{ mars.JPL_Featured_Image_URLs }}" alt="JPL_Featured_Image">
+        <h2>Mars Hemispheres</h2>
+        <h3>{{ mars.Mars_Hemispheres[0]['title'] }}</h3>
+        <img src="{{ mars.Mars_Hemispheres[0]['img_url'] }}" alt="Cerberus Hemisphere ">
+        <h3>{{ mars.Mars_Hemispheres[1]['title'] }}</h3>
+        <img src="{{ mars.Mars_Hemispheres[1]['img_url'] }}" alt="Schiaparelli Hemisphere">
+        <h3>{{ mars.Mars_Hemispheres[2]['title'] }}</h3>
+        <img src="{{ mars.Mars_Hemispheres[2]['img_url'] }}" alt="'Syrtis Major Hemisphere">
+        <h3>{{ mars.Mars_Hemispheres[3]['title'] }}</h3>
+        <img src="{{ mars.Mars_Hemispheres[3]['img_url'] }}" alt="'Valles Marineris Hemisphere">
+    </div>
   </div>
 </body>
 
